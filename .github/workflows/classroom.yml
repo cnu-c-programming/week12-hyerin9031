@@ -21,9 +21,9 @@ jobs:
         setup-command: gcc ./code/1-1.c -o a
         command: "./a ./code/myfile.txt"
         input: ''
-        expected-output: 'The sun rose slowly over the distant mountains, 
-
-          '
+        expected-output: |
+          The sun rose slowly over the distant mountains, 
+          
         comparison-method: contains
         timeout: 10
         max-score: 1
