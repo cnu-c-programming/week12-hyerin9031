@@ -44,7 +44,7 @@ jobs:
       uses: classroom-resources/autograding-io-grader@v1
       with:
         test-name: t1-3
-        setup-command: gcc ./code/1-3 -o a
+        setup-command: gcc ./code/1-3.c -o a
         command: "./a"
         input: ''
         expected-output: |-
@@ -111,6 +111,175 @@ jobs:
         comparison-method: contains
         timeout: 10
         max-score: 1
+    - name: t2-3
+      id: t2-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t2-3
+        setup-command: gcc ./code/2-3.c -o a
+        command: "./a; ./a; ./a; cat ./log.txt"
+        input: ''
+        expected-output: |
+          success
+          success
+          success
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t2-4
+      id: t2-4
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t2-4
+        setup-command: gcc ./code/2-4.c -o a
+        command: "./a ./code/myfile.txt"
+        input: ''
+        expected-output: |
+          a: 81
+          b: 15
+          c: 27
+          d: 43
+          e: 116
+          f: 16
+          g: 27
+          h: 72
+          i: 64
+          j: 2
+          k: 12
+          l: 47
+          m: 22
+          n: 65
+          o: 76
+          p: 11
+          q: 1
+          r: 52
+          s: 61
+          t: 96
+          u: 18
+          v: 11
+          w: 19
+          x: 0
+          y: 17
+          z: 2
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t2-5
+      id: t2-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t2-5
+        setup-command: gcc ./code/2-5.c -o ./a
+        command: "./a ./code/myfile.txt myfile3.txt; cat myfile3.txt"
+        input: ''
+        expected-output: "The sun rose slowly over the distant mountains, \ncasting
+          a warm golden light across the vast open plains that stretched endlessly
+          toward the horizon. \nBirds began to sing their morning songs, \nfilling
+          the crisp air with melodies that seemed to echo through every valley and
+          hollow. \nA gentle breeze moved through the tall grass, making it sway back
+          and forth in a rhythmic, \nalmost hypnotic motion. In the distance, a river
+          wound its way through the landscape like a silver ribbon, \ncatching the
+          early light and scattering it in a thousand directions.\n\nA young traveler
+          stood at the edge of the road, \nadjusting the straps of his heavy backpack
+          and looking out at the world before him. \nHe had been walking for three
+          days now, ever since he left the small town where he had spent most of his
+          childhood. \nThe decision had not been easy, but he knew deep in his heart
+          that it was the right one. \nThere was something out there, beyond the familiar
+          streets and faces, beyond the comfortable routine of daily life, \nthat
+          called to him like a distant song he could never quite make out.\n\nHe had
+          brought with him only the essentials: a change of clothes, a worn leather
+          journal, a small compass, \na pocketknife, some dried food, and a water
+          bottle\n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t2-6
+      id: t2-6
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t2-6
+        setup-command: gcc ./code/2-6.c -o a
+        command: "./a ./code/myfile.txt out"
+        input: ''
+        expected-output: "adjusting the straps of his heavy backpack and looking out
+          at the world before him. \nThere was something out there, beyond the familiar
+          streets and faces, beyond the comfortable routine of daily life, \nthat
+          called to him like a distant song he could never quite make out.\n"
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t2-7
+      id: t2-7
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t2-7
+        setup-command: gcc ./code/2-7.c -o ./code/a
+        command: cd code; ./a
+        input: ''
+        expected-output: 'config: main.exe 200 krb 13074
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t3-1
+      id: t3-1
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t3-1
+        setup-command: gcc ./code/3-1.c -o a
+        command: "./a nofile 2> err.txt; cat err.txt"
+        input: ''
+        expected-output: 'file dose not exists: No such file or directory
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t3-2
+      id: t3-2
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t3-2
+        setup-command: gcc ./code/3-2.c -o a
+        command: "./a ./code/long_string.txt"
+        input: ''
+        expected-output: 'Thesunros
+
+          '
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t3-3
+      id: t3-3
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t3-3
+        setup-command: gcc ./code/3-3.c -o a
+        command: cd code; ../a;
+        input: ''
+        expected-output: |
+          fp1  0000000000000000 0 1
+          fp2  0000000000000000 1 0
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
+    - name: t3-5
+      id: t3-5
+      uses: classroom-resources/autograding-io-grader@v1
+      with:
+        test-name: t3-5
+        setup-command: gcc ./code/3-5.c -o ./code/a
+        command: cd code; ./a > out 2> err ; cat out; cat err
+        input: ''
+        expected-output: |
+          sum: 550
+          invalid input xyz
+          invalid input ?
+          invalid input null
+        comparison-method: contains
+        timeout: 10
+        max-score: 1
     - name: Autograding Reporter
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
@@ -120,5 +289,15 @@ jobs:
         T1-4_RESULTS: "${{steps.t1-4.outputs.result}}"
         T2-1_RESULTS: "${{steps.t2-1.outputs.result}}"
         T2-2_RESULTS: "${{steps.t2-2.outputs.result}}"
+        T2-3_RESULTS: "${{steps.t2-3.outputs.result}}"
+        T2-4_RESULTS: "${{steps.t2-4.outputs.result}}"
+        T2-5_RESULTS: "${{steps.t2-5.outputs.result}}"
+        T2-6_RESULTS: "${{steps.t2-6.outputs.result}}"
+        T2-7_RESULTS: "${{steps.t2-7.outputs.result}}"
+        T3-1_RESULTS: "${{steps.t3-1.outputs.result}}"
+        T3-2_RESULTS: "${{steps.t3-2.outputs.result}}"
+        T3-3_RESULTS: "${{steps.t3-3.outputs.result}}"
+        T3-5_RESULTS: "${{steps.t3-5.outputs.result}}"
       with:
-        runners: t1-1,t1-2,t1-3,t1-4,t2-1,t2-2
+        runners: t1-1,t1-2,t1-3,t1-4,t2-1,t2-2,t2-3,t2-4,t2-5,t2-6,t2-7,t3-1,t3-2,t3-3,t3-5
+
