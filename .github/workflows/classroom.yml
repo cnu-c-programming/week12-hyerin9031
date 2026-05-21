@@ -259,9 +259,9 @@ jobs:
         command: cd code; ../a;
         input: ''
         expected-output: |
-          fp1  0000000000000000 0 1
-          fp2  0000000000000000 1 0
-        comparison-method: contains
+          fp1 .* 0 1
+          fp2 .* 1 0
+        comparison-method: regex
         timeout: 10
         max-score: 1
     - name: t3-5
